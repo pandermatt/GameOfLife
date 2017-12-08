@@ -7,6 +7,6 @@ game_paths = game_paths.map { |p| p[2..-10] }
 choose do |menu|
   menu.prompt = 'Choose one of the games above:'
   menu.choices(*game_paths) do |choosen_path|
-    exec "GAME_PATH=#{choosen_path}/field ruby visualize.rb"
+    exec "GAME_PATH=#{choosen_path}/field ruby gameOfLife.rb"
   end
 end

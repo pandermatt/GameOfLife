@@ -3,7 +3,7 @@
 require_relative 'window'
 require_relative 'game'
 
-class Main
+class GameOfLife
   def run
     window = Window.new
     game = load_game(ENV['GAME_PATH'])
@@ -24,4 +24,4 @@ class Main
   end
 end
 
-Main.new.run
+GameOfLife.new.run
