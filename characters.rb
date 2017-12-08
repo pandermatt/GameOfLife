@@ -1,4 +1,4 @@
 module Characters
-  SMILING = '🙂 '
-  SQUARE = '◻ ︎'
+  SMILING = '🙂 '.freeze
+  SQUARE = '◻ ︎'.freeze
 end

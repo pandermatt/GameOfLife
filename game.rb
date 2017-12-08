@@ -1,4 +1,6 @@
 class Game
+  attr_reader :fields
+
   def initialize(fields)
     @fields = fields
   end
@@ -21,13 +23,9 @@ class Game
 
   def neighbours(x, y)
     [
-        [x-1, y-1], [x-1, y], [x-1, y+1],
-        [x, y-1], [x, y+1],
-        [x+1, y-1], [x+1, y], [x+1, y+1]
+      [x - 1, y - 1], [x - 1, y], [x - 1, y + 1],
+      [x, y - 1], [x, y + 1],
+      [x + 1, y - 1], [x + 1, y], [x + 1, y + 1]
     ].map { |c| get_field(*c) }.count(true)
-  end
-
-  def fields
-    @fields
   end
 end

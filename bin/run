@@ -10,4 +10,3 @@ choose do |menu|
     exec "GAME_PATH=#{choosen_path}/field ruby visualize.rb"
   end
 end
-
