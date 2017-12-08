@@ -5,7 +5,7 @@ game_paths = Dir.glob('./*/field.rb')
 game_paths = game_paths.map { |p| p[2..-10] }
 
 choose do |menu|
-  menu.prompt = 'Choose one of the games above:'
+  menu.prompt = 'Choose one of the simulations above:'
   menu.choices(*game_paths) do |choosen_path|
     exec "GAME_PATH=#{choosen_path}/field ruby gameOfLife.rb"
   end
