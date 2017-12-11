@@ -7,25 +7,25 @@ class Game
 
   def tick
     @fields = @fields.map.with_index do |row, x|
-      row.map.with_index do |cell, y|
-        change_state(cell, neighbours(x, y))
+      row.map.with_index do |field, y|
+        will_live?(field, count_alive_neighbors(x, y))
       end
     end
   end
 
-  def change_state(current_state, n_neighbours)
-    (n_neighbours == 3 || (current_state && n_neighbours == 2))
+  def will_live?(field, count)
+    [false, false, field, true, false, false, false, false][count]
   end
 
-  def neighbours(x, y)
+  def count_alive_neighbors(x, y)
     [
       [x - 1, y - 1], [x - 1, y], [x - 1, y + 1],
       [x, y - 1], [x, y + 1],
       [x + 1, y - 1], [x + 1, y], [x + 1, y + 1]
-    ].map { |c| get_field(*c) }.count(true)
+    ].count { |coordinate_pair| field(*coordinate_pair) }
   end
 
-  def get_field(x, y)
-    !(x < 0 || y < 0) && @fields.fetch(x, []).fetch(y, false)
+  def field(x, y)
+    x >= 0 && y >= 0 && x < @fields.size && y < @fields[x].size && @fields[x][y]
   end
 end
